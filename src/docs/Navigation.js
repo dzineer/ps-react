@@ -2,19 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Navigation = ({components}) => {
+    const navStyles = {
+        width: '18rem'
+    }
     return (
-        <div>
-            <ul className="navigation">
+        <div className="col-md-3" style={navStyles}>
+            <nav className="nav flex-column float-left">
                 {
                     components.map( name => {
                         return (
-                            <li key={name}>
-                                <a href={`#${name}`}>{name}</a>
-                            </li>
+                            // <li className="nav-item">
+                                <a key={name} href={`#${name}`} className="nav-link active">{name}</a>
+                            // </li>
                         )
                     })
                 }
-            </ul>
+            </nav>
         </div>
     );
 }

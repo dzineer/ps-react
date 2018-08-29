@@ -25,9 +25,11 @@ class Docs extends Component {
         })[0] :
             componentData[0];
         return (
-            <div>
-                <Navigation components={componentData.map(component => component.name)} />
-                <ComponentPage component={component} />
+            <div className="card">
+                <div className="card-body">
+                    <Navigation components={componentData.map(component => component.name)} />
+                    <ComponentPage component={component} />
+                </div>
             </div>
         );
     }
