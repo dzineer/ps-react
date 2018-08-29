@@ -5,8 +5,9 @@ import CodeExample from './CodeExample';
 class Example extends Component {
     constructor(props) {
         super(props);
+        console.log(props);
         this.state = {
-            showCode: false
+            showCode: this.props.show_default,
         };
     }
 
@@ -25,7 +26,6 @@ class Example extends Component {
             <div className="example">
                 {description && <h4>{description}</h4>}
                 <ExampleComponent />
-
                 <p>
                     <a href="" onClick={this.toggleCode}>
                         {showCode ? "Hide" : "Show"} Code
@@ -39,7 +39,12 @@ class Example extends Component {
 }
 
 Example.propTypes = {
-    example: PropTypes.object.isRequired
+    example: PropTypes.object.isRequired,
+    show_default: PropTypes.bool.isRequired
 };
+
+Example.defaultProps = {
+    show_default: true
+}
 
 export default Example;
