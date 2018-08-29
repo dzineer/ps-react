@@ -1,31 +1,36 @@
 import React, { Component } from 'react'
-import ProtoTypes from 'prop-types';
-import Example from './Example';
-import Props from './Props';
+import Navigation from './Navigation'
+import ComponentPage from './ComponentPage'
+import componentData from '../config/componentData';
 
-const ComponentPage = ({component}) => {
-    const {name, description, props, examples } = component;
+class Docs extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            route: window.location.hash.substr(1)
+        };
+    }
+    componentDidMount() {
+        window.addEventListener('hashchange', () => {
+            this.setState({
+                route: window.location.hash.substr(1)
+            });
+        })
+    }
 
-    return (
-        <div className="componentpage">
-            <h2>{name}</h2>
-            <p>{description}</p>
-
-            <h3>Example{examples.length > 1 && "s"}</h3>
-            {
-                examples.length > 0 ?
-                    examples.map(example => <Example key={example.code} example={example} componentName={name}/> )
-                    : "No examples Exist."
-            }
-
-            <h3>Props</h3>
-            {
-                props ?
-                    <Props props={props} />
-                    : "This component accepts no props."
-            }
-        </div>
-    )
+    render() {
+        const {route} = this.state;
+        const component = route ? componentData.filter( component => {
+            return component.name === route;
+        })[0] :
+            componentData[0];
+        return (
+            <div>
+                <Navigation components={componentData.map(component => component.name)} />
+                <ComponentPage component={component} />
+            </div>
+        );
+    }
 }
 
-export default ComponentPage;
+export default Docs;

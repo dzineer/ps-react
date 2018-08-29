@@ -16,7 +16,7 @@ const Props = ({props}) => {
             <tbody>
             {
                 Object.keys(props).map(key => {
-                    <tr key={key}>
+                    return <tr key={key}>
                         <td>{key}</td>
                         <td>{props[key].description}</td>
                         <td>{props[key].type.name}</td>

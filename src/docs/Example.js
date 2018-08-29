@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import CodeExample from './CodeExample';
 
 class Example extends Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class Example extends Component {
     toggleCode = event => {
         event.preventDefault();
         this.setState(prevState => {
-            return {showCode: !prevState.show()};
+            return {showCode: !prevState.showCode};
         });
     }
 
@@ -31,7 +32,7 @@ class Example extends Component {
                     </a>
                 </p>
 
-                {showCode && code}
+                {showCode && <CodeExample>{code}</CodeExample>}
             </div>
         );
     }

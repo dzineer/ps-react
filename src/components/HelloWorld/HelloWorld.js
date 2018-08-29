@@ -8,7 +8,13 @@ function HelloWord({message}) {
 }
 
 HelloWord.propTypes = {
-    message: PropTypes.string.isRequired
-}
+    /**
+     * Message to display  */
+    message: PropTypes.string
+};
+
+HelloWord.defaultProps = {
+    message: 'World'
+};
 
 export default HelloWord;

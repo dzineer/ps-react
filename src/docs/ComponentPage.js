@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Example from './Example';
 import Props from './Props';
@@ -14,7 +14,7 @@ const ComponentPage = ({component}) => {
             {
                 examples.length > 0 ?
                     examples.map( example => {
-                        <Example key={example.code} example={example} componentName={name}/>
+                        return <Example key={example.code} example={example} componentName={name} />
                     }) : "No examples exists."
             }
 

@@ -10,10 +10,10 @@ var paths = {
     output: path.join(__dirname, '../src/config/', 'componentData.js'),
 }
 
-console.log('[paths]', paths);
+//console.log('[paths]', paths);
 
 let enableWatchMode = process.argv.slice(2) == '--watch';
-enableWatchMode = true;
+// enableWatchMode = true;
 if (enableWatchMode) {
     // Regenerate component metadata when components or examples change
     chokidar.watch([paths.examples, paths.components]).on('change', function(event,path) {
@@ -27,20 +27,20 @@ function generate(paths) {
     let errors = [];
     let componentData = getDirectories(paths.components).map(function(componentName) {
         try {
-            console.log('before getComponentData');
+           // console.log('before getComponentData');
             let componentData = getComponentData(paths, componentName);
-            console.log('after getComponentData');
+           // console.log('after getComponentData');
             return componentData;
         } catch( error ) {
             errors.push('An error occurred while attempting to generate metadata for ' + componentName + '. ' + error);
         }
     });
-    writeFile(paths.output, "model.exports = " + JSON.stringify(errors.length ? errors : componentData));
+    writeFile(paths.output, "module.exports = " + JSON.stringify(errors.length ? errors : componentData));
 }
 
 function getComponentData(paths, componentName) {
     let file = path.join(paths.components, componentName, componentName + '.js');
-    console.log("[getComponentData::file]", file);
+    //console.log("[getComponentData::file]", file);
     let content = readFile(file);
     let info = reactDocs.parse(content);
 
@@ -51,7 +51,7 @@ function getComponentData(paths, componentName) {
         examples: getExampleData(paths.examples, componentName)
     }
 
-    console.log("[data]", data);
+   // console.log("[data]", data);
     return data;
 }
 
@@ -92,16 +92,16 @@ function getFiles (filePath) {
 }
 
 function writeFile (filePath, content) {
-    console.log("[filePath]", filePath);
-    console.log("[content]", content);
+    //console.log("[filePath]", filePath);
+    //console.log("[content]", content);
     fs.writeFile(filePath, content, function(err) {
         err ? console.log(chalk.red(err)) : console.log(chalk.green("Component data saved."))
     })
 }
 
 function readFile (filePath) {
-    console.log(['readFile::filePath'], filePath);
+   // console.log(['readFile::filePath'], filePath);
     let data = fs.readFileSync(filePath, "utf-8");
-    console.log(['readFile::data'], data);
+   // console.log(['readFile::data'], data);
     return data;
 }
