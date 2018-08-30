@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Navigation from './Navigation'
+import Page from './Page';
 import ComponentPage from './ComponentPage'
 import componentData from '../config/componentData';
 
@@ -25,12 +26,12 @@ class Docs extends Component {
         })[0] :
             componentData[0];
         return (
-            <div className="card">
-                <div className="card-body">
+            <Page>
+                <div className="row">
                     <Navigation components={componentData.map(component => component.name)} />
                     <ComponentPage component={component} />
                 </div>
-            </div>
+            </Page>
         );
     }
 }

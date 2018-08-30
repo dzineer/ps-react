@@ -2,15 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Props = ({props}) => {
+    console.log(props);
     return (
-        <table className="props">
-            <thead>
+        <table className="props table table-striped table-bordered">
+            <thead className="thead-light">
             <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Type</th>
-                <th>Default</th>
-                <th>Required</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Type</th>
+                <th scope="col">Default</th>
+                <th scope="col">Required</th>
             </tr>
             </thead>
             <tbody>
@@ -19,9 +20,14 @@ const Props = ({props}) => {
                     return <tr key={key}>
                         <td>{key}</td>
                         <td>{props[key].description}</td>
-                        <td>{props[key].type.name}</td>
+                            {
+                                typeof props[key].type !== 'undefined' ?
+                                    <td>{props[key].type.name}</td>
+                                    :
+                                   <td>No Type Shown</td>
+                            }
                         <td>{props[key].defaultValue && props[key].defaultValue.value}</td>
-                        <td>{props[key].required}</td>
+                        <td>{props[key].required ? 'X' : ''}</td>
                     </tr>
                 })
             }

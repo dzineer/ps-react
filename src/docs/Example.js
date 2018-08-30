@@ -23,17 +23,17 @@ class Example extends Component {
         const {code, description, name} = this.props.example;
         const ExampleComponent = require(`./examples/${this.props.componentName}/${name}`).default;
         return (
-            <div className="example">
-                {description && <h4>{description}</h4>}
-                <ExampleComponent />
-                <p>
-                    <a href="" onClick={this.toggleCode}>
-                        {showCode ? "Hide" : "Show"} Code
-                    </a>
-                </p>
+                <div className="example">
+                    {description && <h4>{description}</h4>}
+                    <ExampleComponent />
+                    <p>
+                        <a href="" onClick={this.toggleCode} className="">
+                            {showCode ? "Hide" : "Show"} Code
+                        </a>
+                    </p>
 
-                {showCode && <CodeExample>{code}</CodeExample>}
-            </div>
+                    {showCode && <CodeExample>{code}</CodeExample>}
+                </div>
         );
     }
 }
@@ -44,7 +44,7 @@ Example.propTypes = {
 };
 
 Example.defaultProps = {
-    show_default: true
+    show_default: false
 }
 
 export default Example;

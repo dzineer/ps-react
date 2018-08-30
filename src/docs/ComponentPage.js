@@ -5,12 +5,20 @@ import Props from './Props';
 
 const ComponentPage = ({component}) => {
     const { name, description, props, examples } = component;
+    const css = {
+        for: {
+            container: {
+                padding: '20px'
+            }
+        }
+    }
     return (
-        <div className="col-md-9 float-right">
+        <div className="col-md-9 float-right" style={css.for.container}>
+
             <h2>{name}</h2>
             <p>{description}</p>
 
-            <h3>Example{examples.length > 1 && "s"}</h3>
+            <h3>Examples {examples.length > 1 && "s"}</h3>
             {
                 examples.length > 0 ?
                     examples.map( example => {
