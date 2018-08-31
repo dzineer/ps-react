@@ -19,7 +19,7 @@ const TextInput = ({htmlId, name, label, type="text", required=false, placeholde
     };
 
     return (
-        <div style={css.for.container}>
+        <div style={css.for.container} className="textinput">
             <Label htmlFor={htmlId} label={label} required={required} />
             <input
                 id={htmlId}
@@ -27,12 +27,12 @@ const TextInput = ({htmlId, name, label, type="text", required=false, placeholde
                 name={name}
                 placeholder={placeholder}
                 value={value}
-                style={error && css.for.input}
+                className={error && 'textinput__input--state-error'}
                 required
                 {...props}
             />
             {children}
-            {error && <div className="error" style={css.for.error}>{error}</div>}
+            {error && <div className="textinput__error">{error}</div>}
         </div>
     );
 };

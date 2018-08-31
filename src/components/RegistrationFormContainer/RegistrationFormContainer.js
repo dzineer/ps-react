@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import TextInput from '../TextInput';
 import PasswordInput from '../PasswordInput';
 
-/** Registration form with built-in validation */
-class RegistrationForm extends Component {
+/** RegistrationFormContainer form with built-in validation */
+class RegistrationFormContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -89,7 +89,7 @@ class RegistrationForm extends Component {
     }
 }
 
-RegistrationForm.propTypes = {
+RegistrationFormContainer.propTypes = {
     /** Message display upon successful submission */
     confirmationMessage: PropTypes.string.isRequired,
 
@@ -100,9 +100,9 @@ RegistrationForm.propTypes = {
     minPasswordLength: PropTypes.number
 };
 
-RegistrationForm.defaultProps = {
+RegistrationFormContainer.defaultProps = {
     confirmationMessage: "Thanks for registering!",
     minPasswordLength: 8
 };
 
-export default RegistrationForm;
+export default RegistrationFormContainer;

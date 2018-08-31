@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import utils from '../../utils/percentUtils';
 
 class ProgressBar extends Component {
     constructor(props) {
@@ -21,9 +22,11 @@ class ProgressBar extends Component {
         return percent < 50 ? this.colors.percent.range.start : this.colors.percent.range.mid;
     };
 
-    getWidthAsPercentOfTotalWidth = () => {
-        return parseInt(this.props.width * (this.props.percent / 100), 10);
+    getProps = () => {
+        return this.props;
     };
+
+    getWidthAsPercentage = utils.getWidthAsPercentage;
 
     render() {
         const {percent, width, height, shape} = this.props;
@@ -34,7 +37,7 @@ class ProgressBar extends Component {
                     padding: '30px 0'
                 },
                 bar: {
-                    width: this.getWidthAsPercentOfTotalWidth(),
+                    width: utils.getWidthAsPercentage(this.props.percent, width),
                     height: height,
                     backgroundColor: this.getColor(percent),
                     borderRadius: shape === 'circle' ? '50%' : '0'

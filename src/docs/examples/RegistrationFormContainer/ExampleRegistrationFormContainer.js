@@ -1,8 +1,8 @@
 import React, { Component} from 'react';
-import RegistrationForm from "ps-react/RegistrationForm";
+import RegistrationFormContainer from "ps-react/RegistrationFormContainer";
 
-/** RegistrationFormExample example testing all features */
-class RegistrationFormExample extends Component {
+/** ExampleRegistrationFormContainer example testing all features */
+class ExampleRegistrationFormContainer extends Component {
     constructor(props) {
         super(props);
 
@@ -15,17 +15,14 @@ class RegistrationFormExample extends Component {
         };
     }
 
-    onSubmit = event => {
-        // alert(event);
-        event.preventDefault();
-        console.log('Submitted');
-        return false;
+    onSubmit = (user) => {
+        console.log(user);
     };
 
     render() {
         return (
             <div style={this.css.for.container}>
-                <RegistrationForm
+                <RegistrationFormContainer
                     confirmationMessage="Thank you for registering with us."
                     onSubmit={this.onSubmit}
                     minPasswordLength={8}
@@ -35,4 +32,4 @@ class RegistrationFormExample extends Component {
         );
     }
 }
-export default RegistrationFormExample;
+export default ExampleRegistrationFormContainer;

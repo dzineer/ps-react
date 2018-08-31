@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Label from '../Label';
+import styles from './textInput.css';
 
 /** Text input with integrated label to enforce consistency in layout, error display, label placement  */
 const TextInput = ({htmlId, name, label, type="text", required=false, placeholder, value, children, error, ...props}) => {
@@ -19,7 +20,7 @@ const TextInput = ({htmlId, name, label, type="text", required=false, placeholde
     };
 
     return (
-        <div style={css.for.container}>
+        <div style={css.for.container} className={styles.fieldset}>
             <Label htmlFor={htmlId} label={label} required={required} />
             <input
                 id={htmlId}
@@ -27,12 +28,12 @@ const TextInput = ({htmlId, name, label, type="text", required=false, placeholde
                 name={name}
                 placeholder={placeholder}
                 value={value}
-                style={error && css.for.input}
+                className={error && styles.inputError}
                 required
                 {...props}
             />
             {children}
-            {error && <div className="error" style={css.for.error}>{error}</div>}
+            {error && <div className={styles.error}>{error}</div>}
         </div>
     );
 };
