@@ -106,3 +106,15 @@
 - Commit does not run cross-platform
 - Node version conflicts
 - Did not run tests
+- Bad merge
+
+## Can do:
+- Run Automated Build
+- Run your tests
+- Check code coverage
+- Automate deployment
+
+## Servers
+- Travis
+- Appveyor
+- Jenkins
