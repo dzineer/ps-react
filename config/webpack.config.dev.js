@@ -165,6 +165,8 @@ module.exports = {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
+/*                  modules: true,
+                  localIdentName: '[name]__[fd3]--[hash:base64:5]',*/
                 },
               },
               {
@@ -188,6 +190,9 @@ module.exports = {
                 },
               },
             ],
+            exclude: [
+                path.resolve(__dirname, "node_modules"),
+            ]
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
